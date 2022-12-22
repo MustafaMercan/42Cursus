@@ -6,7 +6,7 @@
 /*   By: mmercan <mmercan@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:15:00 by mmercan           #+#    #+#             */
-/*   Updated: 2022/12/21 15:38:42 by mmercan          ###   ########.fr       */
+/*   Updated: 2022/12/21 16:27:55 by mmercan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strdup(const char *s1);
-int		ft_atoi(const char *nptr);
+int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
