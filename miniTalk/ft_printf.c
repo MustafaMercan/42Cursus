@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmercan <mmercan@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 16:42:27 by mmercan           #+#    #+#             */
+/*   Updated: 2023/03/05 16:42:28 by mmercan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 int	ft_putchar(char c)
@@ -63,11 +75,11 @@ int	ft_check_format(va_list args, char format)
 		len += ft_itoa_base(va_arg(args, unsigned long long), 16,
 				"0123456789abcdef", 2);
 	else if (format == 'x')
-		len += ft_itoa_base(va_arg(args, unsigned int), 16,
-				"0123456789abcdef", 0);
+		len += ft_itoa_base(va_arg(args, unsigned int), 16, "0123456789abcdef",
+				0);
 	else if (format == 'X')
-		len += ft_itoa_base(va_arg(args, unsigned int), 16,
-				"0123456789ABCDEF", 0);
+		len += ft_itoa_base(va_arg(args, unsigned int), 16, "0123456789ABCDEF",
+				0);
 	else if (format == '%')
 		len += ft_putchar('%');
 	return (len);
