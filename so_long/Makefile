@@ -1,18 +1,29 @@
-NAME = so_long
-OBJ = $(shell find ./ -name "*.o")
-ARC = $(shell find ./ -name "*.a")
-CFILES = $(shell find ./ -name "*.c")
-CC = gcc
-FLAGS = -Wall -Wextra -Werror -framework OpenGL -framework AppKit -L./minilibx -lmlx -g
-#all kısmına başka kütüphaneler eklediğinde make -C komutu ile orada da make işlemini gerçekleştir.
-#make işlemi ekledikten sonra all: kısmında 2.satıra konumdaki .a uzantılı dosyaları da ekle
-all:
-	make -C ./minilibx
-	$(CC) ./src/*.c $(FLAGS) -o $(NAME)
-clean:
-	@rm -fr $(OBJ)
-fclean: clean
-	@rm -fr $(NAME) $(ARC)
-re: fclean all
+NAME := so_long
 
-.PHONY: all clean fclean re
+CC := gcc
+NORMINETTE := norminette
+
+CFLAGS := -Wall -Wextra -Werror -Iheaders/
+
+SOURCE := main.c map.c map_2.c map_reading.c graphics.c controls.c
+GETNEXTLINE := gnl/*c
+LIBFT := libft/ft_*.c
+FTPRINTF := printf/*c
+LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
+MINILIBX := minilibx/
+
+all:
+	make -C $(MINILIBX)
+	$(CC) $(CFLAGS) $(SOURCE) $(FTPRINTF) $(LIBFT) $(GETNEXTLINE) $(LIBRARY) -o $(NAME)
+
+norm:
+	$(NORMINETTE) $(SOURCE) $(FTPRINTF) $(LIBFT) $(GETNEXTLINE) so_long.h
+clean:
+	@rm -f  *.o
+
+fclean: clean
+		make clean -C $(MINILIBX)
+		rm -rf $(NAME)
+
+re: fclean all
+.PHONY : all clean fclean re norm
